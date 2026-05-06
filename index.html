@@ -3,108 +3,138 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BLACKSHOP | Tools Store</title>
+<title>BLACKSHOP | Pro Tools Store</title>
+
 <style>
-body {
-    margin: 0;
-    font-family: Arial;
-    background: #0d0d0d;
-    color: white;
+body{
+    margin:0;
+    font-family:Arial;
+    background:#0b0b0b;
+    color:#fff;
 }
 
-header {
-    padding: 20px;
-    text-align: center;
-    background: #111;
-    font-size: 24px;
-    font-weight: bold;
-    letter-spacing: 2px;
+header{
+    padding:20px;
+    text-align:center;
+    background:#111;
+    font-size:22px;
+    font-weight:bold;
+    letter-spacing:2px;
+    color:#f5c542;
 }
 
-.hero {
-    text-align: center;
-    padding: 50px 20px;
+.hero{
+    text-align:center;
+    padding:40px 20px;
 }
 
-.hero h1 {
-    font-size: 32px;
-    color: #f5c542;
+.hero h1{
+    font-size:30px;
+    color:#f5c542;
 }
 
-.products {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
-    padding: 20px;
+.hero p{
+    color:#aaa;
 }
 
-.card {
-    background: #1a1a1a;
-    padding: 15px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+    padding:20px;
 }
 
-.card h3 {
-    color: #f5c542;
+.card{
+    background:#1a1a1a;
+    padding:15px;
+    border-radius:12px;
+    text-align:center;
+    transition:0.3s;
 }
 
-.btn {
-    margin-top: 10px;
-    padding: 10px;
-    background: #f5c542;
-    border: none;
-    width: 100%;
-    cursor: pointer;
-    font-weight: bold;
+.card:hover{
+    transform:scale(1.03);
 }
 
-footer {
-    text-align: center;
-    padding: 20px;
-    background: #111;
-    margin-top: 20px;
-    font-size: 12px;
+.card h3{
+    color:#f5c542;
+}
+
+.price{
+    color:#aaa;
+    margin:5px 0;
+}
+
+.btn{
+    margin-top:10px;
+    padding:10px;
+    width:100%;
+    border:none;
+    background:#f5c542;
+    font-weight:bold;
+    cursor:pointer;
+    border-radius:6px;
+}
+
+.btn:hover{
+    background:#ffda66;
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    font-size:12px;
+    color:#666;
+    margin-top:20px;
 }
 </style>
+
 </head>
+
 <body>
 
 <header>
-BLACKSHOP 🔧
+BLACKSHOP 🔧 PRO WORKSHOP TOOLS
 </header>
 
 <div class="hero">
-<h1>Professional Workshop Tools</h1>
-<p>High quality tools for professionals and workshops</p>
+<h1>Professional Tools Store</h1>
+<p>High quality workshop tools for professionals</p>
 </div>
 
 <div class="products">
 
 <div class="card">
-<h3>Drill Machine</h3>
-<p>Strong and professional tool</p>
-<button class="btn">Order Now</button>
+<h3>Cordless Drill</h3>
+<p class="price">$49 - Professional Grade</p>
+<button class="btn" onclick="order('Cordless Drill')">Order Now</button>
 </div>
 
 <div class="card">
 <h3>Impact Wrench</h3>
-<p>High torque performance</p>
-<button class="btn">Order Now</button>
+<p class="price">$79 - High Torque</p>
+<button class="btn" onclick="order('Impact Wrench')">Order Now</button>
 </div>
 
 <div class="card">
-<h3>Tool Kit</h3>
-<p>Complete workshop set</p>
-<button class="btn">Order Now</button>
+<h3>Tool Kit Set</h3>
+<p class="price">$99 - Full Set</p>
+<button class="btn" onclick="order('Tool Kit Set')">Order Now</button>
 </div>
 
 </div>
 
 <footer>
-BLACKSHOP © 2026 - Workshop Tools Store
+BLACKSHOP © 2026 | Professional Workshop Tools
 </footer>
+
+<script>
+function order(product){
+    let phone = "2189XXXXXXX"; // غيّر رقمك هنا
+    let message = "Hello, I want to order: " + product;
+    window.open("https://wa.me/" + phone + "?text=" + encodeURIComponent(message));
+}
+</script>
 
 </body>
 </html>
