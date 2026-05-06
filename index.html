@@ -17,6 +17,7 @@ color:white;
 overflow:hidden;
 }
 
+/* خلفية فخمة */
 .bg{
 position:absolute;
 width:100%;
@@ -24,22 +25,29 @@ height:100%;
 background:radial-gradient(circle at top, #1a1a1a, #000);
 }
 
+/* طبقة ضوء */
 .overlay{
 position:absolute;
 width:100%;
 height:100%;
-background:linear-gradient(120deg, rgba(0,0,0,0.85), rgba(0,0,0,0.4));
+background:linear-gradient(120deg, rgba(0,0,0,0.9), rgba(0,0,0,0.4));
 }
 
+/* المحتوى */
 .content{
 position:relative;
 text-align:center;
 z-index:2;
 }
 
-.wolf{
-font-size:70px;
-margin-bottom:10px;
+/* 🔥 أيقونة الذئب الفخمة */
+.wolf-icon{
+font-size:45px;
+letter-spacing:6px;
+font-weight:bold;
+color:#f5c542;
+text-shadow:0 0 10px #f5c542, 0 0 25px rgba(245,197,66,0.6);
+margin-bottom:15px;
 animation:float 4s ease-in-out infinite;
 }
 
@@ -49,15 +57,17 @@ animation:float 4s ease-in-out infinite;
 100%{transform:translateY(0px);}
 }
 
+/* اسم المتجر */
 .title{
-font-size:50px;
+font-size:55px;
 font-weight:bold;
-letter-spacing:5px;
+letter-spacing:6px;
 color:#f5c542;
+text-shadow:0 0 20px rgba(245,197,66,0.4);
 }
 
 .line{
-width:120px;
+width:140px;
 height:2px;
 background:#f5c542;
 margin:20px auto;
@@ -66,35 +76,8 @@ margin:20px auto;
 .subtitle{
 color:#aaa;
 font-size:16px;
-margin-bottom:20px;
+margin-top:10px;
 }
-
-/* أزرار السوشيال */
-.social{
-display:flex;
-flex-direction:column;
-gap:10px;
-margin-top:20px;
-}
-
-.btn{
-padding:12px;
-border:none;
-cursor:pointer;
-font-weight:bold;
-width:220px;
-margin:auto;
-border-radius:6px;
-text-decoration:none;
-display:block;
-color:white;
-}
-
-.fb{background:#1877f2;}
-.ig{background:#e1306c;}
-.tt{background:#000000;}
-.th{background:#444;}
-.wa{background:#25D366;}
 
 </style>
 
@@ -107,7 +90,7 @@ color:white;
 
 <div class="content">
 
-<div class="wolf">🐺</div>
+<div class="wolf-icon">𝕎𝕆𝕃𝔽</div>
 
 <div class="title">BLACKSHOP</div>
 
@@ -116,20 +99,6 @@ color:white;
 <div class="subtitle">
 Professional Workshop Tools<br>
 Power • Strength • Precision
-</div>
-
-<div class="social">
-
-<a class="btn fb" href="https://www.facebook.com/share/1CTQGUZV3C/?mibextid=wwXIfr" target="_blank">Facebook</a>
-
-<a class="btn ig" href="https://www.instagram.com/black.shop.ly?igsh=MWFnd3d4NzduOXAxYg%3D%3D&utm_source=qr" target="_blank">Instagram</a>
-
-<a class="btn tt" href="https://www.tiktok.com/@blcakshop?_r=1&_t=ZS-968CofmL2kn" target="_blank">TikTok</a>
-
-<a class="btn th" href="https://www.threads.com/@black.shop.ly?igshid=NTc4MTIwNjQ2YQ==" target="_blank">Threads</a>
-
-<a class="btn wa" href="https://wa.me/218944254863" target="_blank">WhatsApp</a>
-
 </div>
 
 </div>
