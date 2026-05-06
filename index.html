@@ -3,123 +3,133 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BLACKSHOP | Workshop Tools</title>
+<title>BLACKSHOP STORE</title>
 
 <style>
 body{
 margin:0;
 font-family:Arial;
-background:#0b0b0b;
+background:#111;
 color:white;
+transition:0.3s;
 }
 
 header{
-background:#111;
-padding:20px;
+background:#000;
+padding:15px;
 text-align:center;
-font-size:24px;
+color:#f5c542;
 font-weight:bold;
-color:#f5c542;
 }
 
-.hero{
-padding:25px;
-text-align:center;
-background:#151515;
+.container{padding:15px;}
+
+input,textarea{
+width:100%;
+padding:10px;
+margin:5px 0;
 }
 
-.hero h1{
-margin:0;
-color:#f5c542;
-}
-
-.hero p{
-color:#aaa;
-}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:15px;
-padding:15px;
-}
-
-.card{
-background:#1c1c1c;
-padding:15px;
-border-radius:10px;
-}
-
-.card h3{
-color:#f5c542;
-margin:0 0 10px 0;
-}
-
-.price{
-color:#aaa;
-margin-bottom:10px;
-}
-
-.btn{
+button{
 width:100%;
 padding:10px;
 background:#f5c542;
 border:none;
-cursor:pointer;
 font-weight:bold;
+cursor:pointer;
 }
 
-footer{
-text-align:center;
-padding:15px;
-color:#666;
-font-size:12px;
-margin-top:20px;
+.product{
+background:#1e1e1e;
+padding:10px;
+margin:10px 0;
+border-radius:8px;
 }
+
+.top{
+display:flex;
+gap:10px;
+}
+
+.top button{flex:1;}
 </style>
 
 </head>
 
 <body>
 
-<header>BLACKSHOP 🔧 WORKSHOP TOOLS</header>
+<header>BLACKSHOP 🔧 STORE</header>
 
-<div class="hero">
-<h1>Professional Tools Store</h1>
-<p>Powerful tools for workshops, mechanics & professionals</p>
+<div class="container">
+
+<div class="top">
+<button onclick="toggle()">Dark/Light</button>
+<button onclick="changeBg()">BG</button>
 </div>
 
-<div class="grid">
+<h3>Add Product</h3>
+<input id="name" placeholder="Name">
+<input id="price" placeholder="Price">
+<input id="img" placeholder="Image URL">
+<button onclick="add()">Add</button>
 
-<div class="card">
-<h3>Drill Machine</h3>
-<p class="price">$49 - High Power Drill</p>
-<button class="btn">Order Now</button>
-</div>
+<h3>News</h3>
+<textarea id="news" placeholder="Write news"></textarea>
+<button onclick="saveNews()">Save News</button>
 
-<div class="card">
-<h3>Impact Wrench</h3>
-<p class="price">$79 - Strong Torque Tool</p>
-<button class="btn">Order Now</button>
-</div>
-
-<div class="card">
-<h3>Tool Set</h3>
-<p class="price">$99 - Complete Kit</p>
-<button class="btn">Order Now</button>
-</div>
-
-<div class="card">
-<h3>Angle Grinder</h3>
-<p class="price">$59 - Cutting Power Tool</p>
-<button class="btn">Order Now</button>
-</div>
+<div id="newsBox"></div>
+<div id="list"></div>
 
 </div>
 
-<footer>
-BLACKSHOP © Workshop Equipment Store
-</footer>
+<script>
+
+let products = JSON.parse(localStorage.getItem("p")) || [];
+let news = localStorage.getItem("n") || "";
+
+function add(){
+let n=document.getElementById("name").value;
+let p=document.getElementById("price").value;
+let i=document.getElementById("img").value;
+
+products.push({n,p,i});
+localStorage.setItem("p",JSON.stringify(products));
+render();
+}
+
+function render(){
+let list=document.getElementById("list");
+list.innerHTML="";
+
+products.forEach(x=>{
+list.innerHTML+=`
+<div class="product">
+<img src="${x.i}" width="100%">
+<h3>${x.n}</h3>
+<p>${x.p}</p>
+</div>`;
+});
+
+document.getElementById("newsBox").innerHTML = "<p>"+news+"</p>";
+}
+
+function saveNews(){
+news=document.getElementById("news").value;
+localStorage.setItem("n",news);
+render();
+}
+
+function toggle(){
+document.body.classList.toggle("light");
+}
+
+function changeBg(){
+document.body.style.background="#222";
+}
+
+render();
+
+</script>
 
 </body>
 </html>
