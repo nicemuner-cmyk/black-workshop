@@ -3,133 +3,101 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BLACKSHOP STORE</title>
+<title>BLACKSHOP</title>
 
 <style>
 body{
 margin:0;
-font-family:Arial;
-background:#111;
-color:white;
-transition:0.3s;
-}
-
-header{
-background:#000;
-padding:15px;
-text-align:center;
-color:#f5c542;
-font-weight:bold;
-}
-
-.container{padding:15px;}
-
-input,textarea{
-width:100%;
-padding:10px;
-margin:5px 0;
-}
-
-button{
-width:100%;
-padding:10px;
-background:#f5c542;
-border:none;
-font-weight:bold;
-cursor:pointer;
-}
-
-.product{
-background:#1e1e1e;
-padding:10px;
-margin:10px 0;
-border-radius:8px;
-}
-
-.top{
+height:100vh;
 display:flex;
-gap:10px;
+justify-content:center;
+align-items:center;
+font-family:Arial;
+color:white;
+overflow:hidden;
 }
 
-.top button{flex:1;}
+/* خلفية فخمة */
+.bg{
+position:absolute;
+width:100%;
+height:100%;
+background:radial-gradient(circle at top, #1a1a1a, #000);
+}
+
+/* طبقة تأثير */
+.overlay{
+position:absolute;
+width:100%;
+height:100%;
+background:linear-gradient(120deg, rgba(0,0,0,0.8), rgba(0,0,0,0.4));
+backdrop-filter:blur(2px);
+}
+
+/* محتوى */
+.content{
+position:relative;
+text-align:center;
+z-index:2;
+}
+
+.title{
+font-size:50px;
+font-weight:bold;
+letter-spacing:5px;
+color:#f5c542;
+}
+
+.subtitle{
+margin-top:10px;
+color:#aaa;
+font-size:16px;
+}
+
+.icon{
+width:180px;
+margin-bottom:20px;
+filter:drop-shadow(0 0 20px rgba(245,197,66,0.5));
+animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0px);}
+50%{transform:translateY(-10px);}
+100%{transform:translateY(0px);}
+}
+
+/* خط ذهبي */
+.line{
+width:120px;
+height:2px;
+background:#f5c542;
+margin:20px auto;
+}
+
 </style>
 
 </head>
 
 <body>
 
-<header>BLACKSHOP 🔧 STORE</header>
+<div class="bg"></div>
+<div class="overlay"></div>
 
-<div class="container">
+<div class="content">
 
-<div class="top">
-<button onclick="toggle()">Dark/Light</button>
-<button onclick="changeBg()">BG</button>
+<!-- شعار رمزي (ذئب + مفتاح بشكل فني) -->
+<img class="icon" src="https://i.imgur.com/8QfZ4bF.png" alt="logo">
+
+<div class="title">BLACKSHOP</div>
+<div class="line"></div>
+
+<div class="subtitle">
+Professional Workshop Tools<br>
+Power • Strength • Precision
 </div>
 
-<h3>Add Product</h3>
-<input id="name" placeholder="Name">
-<input id="price" placeholder="Price">
-<input id="img" placeholder="Image URL">
-<button onclick="add()">Add</button>
-
-<h3>News</h3>
-<textarea id="news" placeholder="Write news"></textarea>
-<button onclick="saveNews()">Save News</button>
-
-<div id="newsBox"></div>
-<div id="list"></div>
-
 </div>
-
-<script>
-
-let products = JSON.parse(localStorage.getItem("p")) || [];
-let news = localStorage.getItem("n") || "";
-
-function add(){
-let n=document.getElementById("name").value;
-let p=document.getElementById("price").value;
-let i=document.getElementById("img").value;
-
-products.push({n,p,i});
-localStorage.setItem("p",JSON.stringify(products));
-render();
-}
-
-function render(){
-let list=document.getElementById("list");
-list.innerHTML="";
-
-products.forEach(x=>{
-list.innerHTML+=`
-<div class="product">
-<img src="${x.i}" width="100%">
-<h3>${x.n}</h3>
-<p>${x.p}</p>
-</div>`;
-});
-
-document.getElementById("newsBox").innerHTML = "<p>"+news+"</p>";
-}
-
-function saveNews(){
-news=document.getElementById("news").value;
-localStorage.setItem("n",news);
-render();
-}
-
-function toggle(){
-document.body.classList.toggle("light");
-}
-
-function changeBg(){
-document.body.style.background="#222";
-}
-
-render();
-
-</script>
 
 </body>
 </html>
