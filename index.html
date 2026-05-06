@@ -3,89 +3,68 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BLACKSHOP | Pro Tools Store</title>
+<title>BLACKSHOP STORE</title>
 
 <style>
 body{
     margin:0;
     font-family:Arial;
-    background:#0b0b0b;
-    color:#fff;
+    background:#0d0d0d;
+    color:white;
 }
 
 header{
-    padding:20px;
-    text-align:center;
     background:#111;
+    text-align:center;
+    padding:20px;
+    color:#f5c542;
     font-size:22px;
     font-weight:bold;
-    letter-spacing:2px;
-    color:#f5c542;
 }
 
-.hero{
-    text-align:center;
-    padding:40px 20px;
+.container{
+    padding:15px;
 }
 
-.hero h1{
-    font-size:30px;
-    color:#f5c542;
-}
-
-.hero p{
-    color:#aaa;
-}
-
-.products{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:15px;
-    padding:20px;
-}
-
-.card{
+.add-box{
     background:#1a1a1a;
     padding:15px;
-    border-radius:12px;
-    text-align:center;
-    transition:0.3s;
+    border-radius:10px;
+    margin-bottom:20px;
 }
 
-.card:hover{
-    transform:scale(1.03);
-}
-
-.card h3{
-    color:#f5c542;
-}
-
-.price{
-    color:#aaa;
-    margin:5px 0;
-}
-
-.btn{
-    margin-top:10px;
-    padding:10px;
+input{
     width:100%;
+    padding:10px;
+    margin:5px 0;
     border:none;
+    border-radius:5px;
+}
+
+button{
+    width:100%;
+    padding:10px;
     background:#f5c542;
+    border:none;
     font-weight:bold;
     cursor:pointer;
-    border-radius:6px;
 }
 
-.btn:hover{
-    background:#ffda66;
+.product{
+    background:#1a1a1a;
+    padding:15px;
+    margin-bottom:10px;
+    border-radius:10px;
 }
 
-footer{
-    text-align:center;
-    padding:20px;
-    font-size:12px;
-    color:#666;
-    margin-top:20px;
+.order{
+    background:#f5c542;
+    padding:8px;
+    border:none;
+    width:100%;
+    margin-top:10px;
+    cursor:pointer;
+    font-weight:bold;
 }
 </style>
 
@@ -93,47 +72,53 @@ footer{
 
 <body>
 
-<header>
-BLACKSHOP 🔧 PRO WORKSHOP TOOLS
-</header>
+<header>BLACKSHOP 🔧 STORE</header>
 
-<div class="hero">
-<h1>Professional Tools Store</h1>
-<p>High quality workshop tools for professionals</p>
+<div class="container">
+
+<div class="add-box">
+<h3>Add Product</h3>
+<input id="name" placeholder="Product Name">
+<input id="price" placeholder="Price">
+<button onclick="addProduct()">Add</button>
 </div>
 
-<div class="products">
-
-<div class="card">
-<h3>Cordless Drill</h3>
-<p class="price">$49 - Professional Grade</p>
-<button class="btn" onclick="order('Cordless Drill')">Order Now</button>
-</div>
-
-<div class="card">
-<h3>Impact Wrench</h3>
-<p class="price">$79 - High Torque</p>
-<button class="btn" onclick="order('Impact Wrench')">Order Now</button>
-</div>
-
-<div class="card">
-<h3>Tool Kit Set</h3>
-<p class="price">$99 - Full Set</p>
-<button class="btn" onclick="order('Tool Kit Set')">Order Now</button>
-</div>
+<div id="list"></div>
 
 </div>
-
-<footer>
-BLACKSHOP © 2026 | Professional Workshop Tools
-</footer>
 
 <script>
-function order(product){
-    let phone = "2189XXXXXXX"; // غيّر رقمك هنا
-    let message = "Hello, I want to order: " + product;
-    window.open("https://wa.me/" + phone + "?text=" + encodeURIComponent(message));
+
+let products = [];
+
+function addProduct(){
+    let name = document.getElementById('name').value;
+    let price = document.getElementById('price').value;
+
+    products.push({name,price});
+    render();
 }
+
+function render(){
+    let list = document.getElementById('list');
+    list.innerHTML = "";
+
+    products.forEach(p=>{
+        list.innerHTML += `
+        <div class="product">
+            <h3>${p.name}</h3>
+            <p>${p.price}</p>
+            <button class="order" onclick="order('${p.name}')">Order</button>
+        </div>`;
+    });
+}
+
+function order(name){
+    let phone = "2189XXXXXXX";
+    let msg = "I want to order: " + name;
+    window.open("https://wa.me/" + phone + "?text=" + encodeURIComponent(msg));
+}
+
 </script>
 
 </body>
